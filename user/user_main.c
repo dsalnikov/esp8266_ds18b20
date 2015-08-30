@@ -16,7 +16,9 @@ static void user_procTask(os_event_t *events);
 
 static volatile os_timer_t some_timer;
 
+void user_rf_pre_init(void);
 
+void user_rf_pre_init(void){}
 void some_timerfunc(void *arg)
 {
 	
@@ -84,8 +86,8 @@ static void ICACHE_FLASH_ATTR user_procTask(os_event_t *events)
 //Init function 
 void ICACHE_FLASH_ATTR user_init()
 {
-    char ssid[32] = "318";
-    char password[64] = "0507337054";
+    char ssid[32] = "DIR-300NRU";
+    char password[64] = "08862907";
     struct station_config stationConf;
 
     // Initialize the GPIO subsystem.
@@ -107,7 +109,7 @@ void ICACHE_FLASH_ATTR user_init()
     wifi_station_set_config(&stationConf);
 
 	
-
+    exec_command("test", NULL);
 
     //Disarm timer
     os_timer_disarm(&some_timer);
